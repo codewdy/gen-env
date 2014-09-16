@@ -1,0 +1,12 @@
+# X init and awesome WM
+ln .xinitrc ~
+ln awesome ~/.config
+
+#vim use bundle
+git https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+ln .vimrc ~
+exec vim +PluginInstall +qall
+
+#oh-my-zsh
+git https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+ln .zshrc ~
