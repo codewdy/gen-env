@@ -1,7 +1,7 @@
 from pkgutil import walk_packages
 from importlib import import_module
 import os
-from utils import shsplit, run_shell
+from utils import shsplit, run_shell, color_print
 
 
 plugins = {}
@@ -26,7 +26,7 @@ def run(s):
     if s == "":
         return
     elif s[0] == "#":
-        print s
+        color_print(s, 0, 31, 44)
         return
     elif s[:5] == "exec ":
         run_shell(s[5:])
