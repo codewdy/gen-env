@@ -6,13 +6,9 @@ fn = argv[:-1]
 if fn[-4:] != ".txt":
     fn = "lns.txt"
 
-"""
-#unit test
-def X(a):
-    print a
-
-os.system = X
-"""
+def p(x):
+    print x
+os.system = lambda x: p(x)
 
 rt = os.path.realpath(".")
 

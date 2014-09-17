@@ -1,12 +1,7 @@
 from pkgutil import walk_packages
 from importlib import import_module
 import os
-
-def run_shell(s, *args):
-    os.system(s.format(*args))
-
-def ab_path(f):
-    return os.path.realpath("dotfile") + "/" + f
+from utils import shsplit, run_shell
 
 
 plugins = {}
@@ -26,18 +21,17 @@ def sp_core(s):
             cur = i + 1
     yield s[cur:] 
 
-def sp(s):
-    for x in sp_core(s):
-        if x != "":
-            yield x
-
 def run(s):
+    s = s.strip(" \t\n\r")
     if s == "":
         return
     elif s[0] == "#":
+        print s
         return
+    elif s[:5] == "exec ":
+        run_shell(s[5:])
     else:
-        lst = list(sp(s))
+        lst = list(shsplit(s))
         return plugins[lst[0]](*lst[1:])
 
 class plugin(object):
@@ -52,3 +46,6 @@ class plugin(object):
         plugins[self.inst] = func
         return func
 
+
+def ConflictException(Exception):
+    pass
