@@ -8,7 +8,7 @@ if fn[-4:] != ".txt":
 
 def p(x):
     print x
-os.system = lambda x: p(x)
+#os.system = lambda x: p(x)
 
 rt = os.path.realpath(".")
 
