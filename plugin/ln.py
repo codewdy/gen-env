@@ -1,4 +1,4 @@
-from plugin_base import plugin, ConflictException
+from plugin import plugin, ConflictException
 from utils import run_shell, gen_src
 from os import path
 

@@ -99,6 +99,8 @@ export LS_COLORS="rs=0:di=00;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 alias honor="cloc --exclude-list-file=IgC.txt ."
 alias nvim="/usr/bin/gvim"
 alias make="make -j 8"
+alias download="aria2c -s 16 -x 16"
+alias win7="virtualbox --startvm Win7"
 
 #cd /codes/ST
 #honor
@@ -107,3 +109,5 @@ alias make="make -j 8"
 
 export PATH=$PATH:/home/wdy/adt-bundle-linux-x86_64-20140702/sdk/tools:/home/wdy/adt-bundle-linux-x86_64-20140702/sdk/platform-tools
 export PATH=$PATH:/usr/lib64/openmpi/bin
+
+stty -ixon

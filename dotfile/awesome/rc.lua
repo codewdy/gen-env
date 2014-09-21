@@ -125,7 +125,7 @@ function volumectl (mode, widget)
         f = io.popen("pamixer --get-mute")
         local muted = f:read("*all")
         f:close()
-        if muted == "false" then
+        if muted == "false\n" then
             volume = '♫' .. volume .. "%"
         else
             volume = '♫' .. volume .. "<span color='red'>M</span>"
@@ -306,9 +306,7 @@ function setRules(s)
 		{ rule = { class = "File-roller" },
 		properties = {tag = tags[s][5]}},
 		{ rule = { class = "VirtualBox" },
-		properties = {tag = tags[s][6], floating = true}},
-		{ rule = { class = "VirtualBox" },
-		properties = {tag = tags[s][6], floating = true}}
+		properties = {tag = tags[s][6], floating = false}}
 	}
 end
 
@@ -575,7 +573,7 @@ setRules(screen.count())
 
 -- }}}
 
-awful.util.spawn_with_shell("fcitx")
+---awful.util.spawn_with_shell("fcitx")
 awful.util.spawn_with_shell("nm-applet")
 awful.util.spawn_with_shell("xfce4-power-manager")
 awful.util.spawn_with_shell("sleep 1; xmodmap /home/wdy/.Xmodmaprc")

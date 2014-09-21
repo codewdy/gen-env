@@ -1,4 +1,4 @@
-from plugin_base import plugin
+from plugin import plugin
 from utils import run_shell, run_shell_text,ab_path
 from os import path
 

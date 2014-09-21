@@ -1,7 +1,7 @@
 from pkgutil import walk_packages
 from importlib import import_module
 import os
-from plugin_base import run
+from runner import run_file
 
 
 def init():

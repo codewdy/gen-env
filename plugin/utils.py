@@ -48,9 +48,17 @@ def arg_decode(s):
         l[0] = _trans_dir[l[0]]
     return "/".join(l)
 
+class tsudoC:
+    pass
+sudoC = tsudoC()
+sudoC.depth = 0
+
 def cmd(s, *args):
     args = [arg_encode(i) for i in args]
-    return s.format(*args)
+    ret = s.format(*args)
+    if sudoC.depth > 0:
+        ret = r'sudo su -c {}'.format(arg_encode(ret))
+    return ret
 
 def run_shell(s, *args):
     c = cmd(s, *args)
@@ -61,7 +69,7 @@ def run_shell_text(s, *args):
     return os.popen(cmd(s, *args)).read()
 
 def ab_path(s):
-    return os.path.realpath("dotfile") + "/" + s
+    return os.path.realpath(".") + "/" + s
 
 def shsplit(s):
     ret = shlex.split(s)
